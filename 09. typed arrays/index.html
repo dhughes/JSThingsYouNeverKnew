@@ -1,0 +1,44 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+	
+	<!--- polyfill for typed arrays in older browsers (android 2.x)
+	<script type="text/javascript" src="js/libs/typedarray.js" ></script> --->
+
+	<script type="text/javascript" src="js/libs/buckets-minified.js" ></script>
+
+	<script type="text/javascript" src="js/Util.js" ></script>
+	<script type="text/javascript" src="js/Card.js" ></script>
+	<script type="text/javascript" src="js/Deck.js" ></script>
+	<script type="text/javascript" src="js/Klondike.js" ></script>
+	<script type="text/javascript" src="js/Player.js" ></script>
+
+    <script>
+        function testGame(){
+            Klondike.automaticallyCreateStringRepresentation = true;
+            
+            var gameState = Klondike.newGame(1);
+            console.log(gameState.stringRepresentation);
+            
+            var started = +new Date();
+            
+            Player.isWinnable(gameState, function(winnable){
+                var time = (+new Date()) - started;
+                
+                if(winnable){
+                    console.log("This game is winnable! (" + time + "ms)");
+                } else {
+                    console.log("This game is a looser. (" + time + "ms)");
+                }
+            })
+        }
+        
+    </script>
+	
+</head>
+<body>
+
+Klondike!!!
+
+</body>
+</html>
